@@ -1,0 +1,14 @@
+<% layout('./layouts/boilerplate.ejs') %>
+
+<div class="container">
+  <h3>Add income</h3>
+  <form action="/expenses/income" method="post">
+    <input type="number" name="income[incomeValue]" placeholder="Add Amount" />
+    <input
+      type="text"
+      name="income[incomeCategory]"
+      placeholder="Income Category"
+    />
+    <button>Add</button>
+  </form>
+</div>

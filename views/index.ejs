@@ -1,7 +1,26 @@
 <% layout('./layouts/boilerplate.ejs') %>
 
-<form action="#">
-  <input type="number" placeholder="Enter amount" name="expenseValue" />
-  <input type="text" placeholder="Expense category" name="expenseCategory" />
-  <button>Add</button>
-</form>
+<div class="container">
+  <h3>Incomes</h3>
+  <% for(income of Incomes){ %>
+  <p>
+    <%=income.incomeValue%> <br />
+    <%=income.incomeCategory%>
+  </p>
+  <% } %>
+
+  <h3>Expenses</h3>
+  <% for(expense of Expenses){ %>
+  <p>
+    <%=expense.expenseValue%> <br />
+    <%=expense.expenseCategory%>
+  </p>
+  <% } %>
+
+  <form method="get" action="/expenses/add-income">
+    <button>Add Income</button>
+  </form>
+  <form method="get" action="/expenses/add-expenses">
+    <button>Add Expense</button>
+  </form>
+</div>
