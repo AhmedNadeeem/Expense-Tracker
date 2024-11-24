@@ -1,26 +1,60 @@
 <% layout('./layouts/boilerplate.ejs') %>
 
-<div class="container">
-  <h3>Incomes</h3>
-  <% for(income of Incomes){ %>
-  <p>
-    <%=income.incomeValue%> <br />
-    <%=income.incomeCategory%>
-  </p>
-  <% } %>
+<div class="main">
+  <div class="container mt-3 flex main_cont">
+    <div class="cur_bal_cont">
+      <h2>
+        Current balance: <%= totalIncome - totalExpense %> <% if (totalIncome <
+        totalExpense) { %> 😱 (add balance) <% } %>
+      </h2>
+    </div>
 
-  <h3>Expenses</h3>
-  <% for(expense of Expenses){ %>
-  <p>
-    <%=expense.expenseValue%> <br />
-    <%=expense.expenseCategory%>
-  </p>
-  <% } %>
+    <div class="detail_cont flex">
+      <div class="income_cont sub_cont flex border">
+        <div class="head">
+          <h4>
+            Total Income: <%= Incomes.reduce((sum, inc) => (sum +=
+            inc.incomeValue), 0) %>
+          </h4>
+        </div>
 
-  <form method="get" action="/expenses/add-income">
-    <button>Add Income</button>
-  </form>
-  <form method="get" action="/expenses/add-expenses">
-    <button>Add Expense</button>
-  </form>
+        <div class="cards_cont">
+          <h3>Incomes</h3>
+          <div class="all_cards flex">
+            <% for(income of Incomes){ %>
+            <div class="card col-6">
+              <div class="card-body">
+                <h5 class="card-title">Amount: <%=income.incomeValue%> Rs</h5>
+                <p class="card-text">Category: <%=income.incomeCategory%></p>
+              </div>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+
+      <div class="expense_cont sub_cont flex border">
+        <div class="head">
+          <h4>
+            Total Expense: <%= Expenses.reduce((sum, exp) => (sum +=
+            exp.expenseValue), 0) %>
+          </h4>
+        </div>
+
+        <div class="cards_cont">
+          <h3>Expenses</h3>
+          <div class="all_cards flex">
+            <% for(expense of Expenses){ %>
+            <div class="card col-6">
+              <div class="card-body">
+                <h5 class="card-title">Amount: <%=expense.expenseValue%> Rs</h5>
+                <p class="card-text">Category: <%=expense.expenseCategory%></p>
+              </div>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

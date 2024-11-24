@@ -10,6 +10,6 @@ staticRouter.get("/", handleIndexRouteGetRequest);
 
 staticRouter.get("/add-income", handleAddIncomeRouteGetRequest);
 
-staticRouter.get("//add-expenses", handleAddExpenseRouteGetRequest);
+staticRouter.get("/add-expenses", handleAddExpenseRouteGetRequest);
 
 module.exports = staticRouter;

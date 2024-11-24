@@ -1,18 +1,39 @@
 <% layout('./layouts/boilerplate.ejs') %>
 
-<div class="container">
+<div class="container offset-3 col-6 mt-5">
   <h3>Add expense</h3>
-  <form action="/expenses/expense" method="post">
-    <input
-      type="number"
-      name="expense[expenseValue]"
-      placeholder="Add Amount"
-    />
-    <input
-      type="text"
-      name="expense[expenseCategory]"
-      placeholder="Expense Category"
-    />
-    <button>Add</button>
+  <form action="/api/expense" method="post">
+    <div class="mb-3">
+      <label for="expense" class="form-label">Expense</label>
+      <input
+        name="expenseValue"
+        type="number"
+        class="form-control"
+        id="expense"
+        min="1"
+      />
+    </div>
+    <div class="mb-3">
+      <select
+        name="expenseCategory"
+        class="form-select"
+        aria-label="Default select example"
+      >
+        <option selected disabled>Expense Category</option>
+        <option value="health">Health</option>
+        <option value="leisure">Leisure</option>
+        <option value="home">Home</option>
+        <option value="food">Food</option>
+        <option value="education">Education</option>
+        <option value="gifts">Gifts</option>
+        <option value="groceries">Groceries</option>
+        <option value="commute">Commute</option>
+        <option value="shopping">Shopping</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="bills">Bills</option>
+        <option value="others">Others</option>
+      </select>
+    </div>
+    <button type="submit" class="btn mt-2">Submit</button>
   </form>
 </div>
